@@ -6,31 +6,40 @@
             "id": "5399579d-dcdf-4098-9086-0aeee1f2ae63",
             "actions": [
                 {
-                    "name": "Thrust",
+                    "name": "JoinAction",
                     "type": "Button",
-                    "id": "477ec1b3-bdae-4d8e-9949-7dc24aa835b8",
+                    "id": "c22793bb-8906-414b-bca1-e59dcf0c081d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Thrust",
+                    "type": "Value",
+                    "id": "477ec1b3-bdae-4d8e-9949-7dc24aa835b8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Pitch",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "72881417-c86e-4d7a-91f2-97e9a374011d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Yaw",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "596bd7d9-ebbe-4c5f-88b3-c3f66747afee",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Roll",
@@ -40,35 +49,88 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Fire1",
+                    "type": "Button",
+                    "id": "90c4e931-a133-4c60-bae0-6eb8bf45c645",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "71120ac3-14c6-408c-9ccf-0b5e8222ab00",
-                    "path": "",
+                    "name": "1D Axis",
+                    "id": "2b49833f-5568-4b61-b2ac-02faa3c2bd3c",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Thrust",
-                    "isComposite": false,
+                    "action": "Roll",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "6839f96b-6177-45c2-98a3-a73b0055c7d7",
-                    "path": "",
+                    "name": "positive",
+                    "id": "b9f0da4a-6cc3-4cb9-a005-51a8ee4f9ea3",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Pitch",
+                    "action": "Roll",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "d0a91b06-ca99-4c76-beb4-36cc9f23f3c0",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "5f011903-6f6b-4a92-9d59-bdb5894bef62",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "negative",
+                    "id": "0d29d47d-66b0-4d74-ba95-d88b7bc62971",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "64f4773e-3592-4ae5-8c59-30b5f98e556b",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
-                    "id": "5bd626db-7174-46e2-9943-69b1a5569b67",
-                    "path": "",
+                    "id": "4f468f81-493e-4d9e-bec5-a9fb2e9053aa",
+                    "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -78,12 +140,78 @@
                 },
                 {
                     "name": "",
-                    "id": "ad81e5d8-76cf-4774-8320-90cd72df3e8c",
-                    "path": "",
+                    "id": "3e857926-5d73-4073-b9ca-8f3f439cde4d",
+                    "path": "<Mouse>/position/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Yaw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a3887fa-d9df-4e3b-99b5-19fbb392739c",
+                    "path": "<Gamepad>/rightStick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Roll",
+                    "action": "Pitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "682f04df-183d-4d0a-b34f-04ad52839539",
+                    "path": "<Mouse>/position/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Pitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba2cd766-3d57-4d5a-9af2-8fbe10a2e7c8",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "JoinAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "064f60d9-9f02-41b9-8a17-dd958d6b502e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "JoinAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ffbc0ab6-b722-41f9-acdf-ba49b5669513",
+                    "path": "<Gamepad>/leftStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Thrust",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "daf33fbe-4779-4f57-a60b-57579c49675a",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Fire1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -97,6 +225,22 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "KBM",
+            "bindingGroup": "KBM",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }
