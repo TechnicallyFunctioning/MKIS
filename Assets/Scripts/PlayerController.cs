@@ -50,19 +50,18 @@ public class PlayerController : MonoBehaviour
     // Physics Based Movement
     private void FixedUpdate()
     {
-        // Brake if no Input
-        if(thrust == 0 && pitching == 0 && yawing == 0 && rolling == 0)
-        {
-            if (shipRb.velocity.magnitude > 0) { shipRb.velocity -= shipRb.velocity * brakeForce; }
-            if (shipRb.angularVelocity.magnitude > 0) { shipRb.angularVelocity -= shipRb.angularVelocity * brakeForce; }
-        }
-        // Handle Thrust
-        shipRb.AddForce(transform.forward * thrust * Time.deltaTime);
-        // Handle Pitch/Yaw/Roll Torque
-        shipRb.AddTorque(transform.right * pitching * pitchForce);
-        shipRb.AddTorque(transform.up * yawing * yawForce);
-        shipRb.AddTorque(transform.forward * rolling * rollForce);
-
+        Quaternion AddRot = Quaternion.identity;
+        float pitch = 0;
+        float yaw = 0;
+        float roll = 0;
+        pitch = pitching * (Time.deltaTime * pitchForce);
+        yaw = yawing * (Time.deltaTime * yawForce);
+        roll = rolling * (Time.deltaTime * rollForce);
+        AddRot.eulerAngles = new Vector3(-pitch, yaw, roll);
+        shipRb.rotation *= AddRot;
+        Vector3 AddPos = Vector3.forward;
+        AddPos = shipRb.rotation * AddPos;
+        shipRb.velocity = AddPos * (Time.deltaTime * thrust);
     }
 
     // Get all Input Data (Button press/release, stick position, etc)
