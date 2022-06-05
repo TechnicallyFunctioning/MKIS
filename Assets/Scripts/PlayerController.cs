@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         pitch = pitching * (Time.deltaTime * pitchForce);
         yaw = yawing * (Time.deltaTime * yawForce);
         roll = rolling * (Time.deltaTime * rollForce);
-        AddRot.eulerAngles = new Vector3(-pitch, yaw, roll);
+        AddRot.eulerAngles = new Vector3(pitch, yaw, roll);
         shipRb.rotation *= AddRot;
         Vector3 AddPos = Vector3.forward;
         AddPos = shipRb.rotation * AddPos;
