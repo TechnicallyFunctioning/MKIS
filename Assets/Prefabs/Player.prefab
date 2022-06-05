@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7570233614371611469}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,6 @@ Transform:
   m_Children:
   - {fileID: 8464368245671316999}
   - {fileID: 8464368246303093080}
-  - {fileID: 1552385118732387044}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43,7 +42,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1552385118732387044}
-  m_Layer: 0
+  - component: {fileID: 8558347246299403195}
+  m_Layer: 10
   m_Name: Weapon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,14 +57,38 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6222397144984051624}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7570233614371611469}
-  m_RootOrder: 2
+  m_Father: {fileID: 8464368245671316999}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8558347246299403195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222397144984051624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2418673fe7a3a6441b9e955f6010dc98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunDamage: 1
+  fireDelay: 0.5
+  fireRange: 50
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  splashMask:
+    serializedVersion: 2
+    m_Bits: 1
+  splashObject: {fileID: 501902511068004236, guid: e25383fcc089b3c4986526d61881033e, type: 3}
+  tracerObject: {fileID: 501902511068004236, guid: 4c5c9b3976306de4c89b1af8fa4cbb38, type: 3}
+  splashDuration: 0.25
 --- !u!1 &8464368245671316996
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +102,7 @@ GameObject:
   - component: {fileID: 8464368245671316997}
   - component: {fileID: 6622008722159798333}
   - component: {fileID: 9071547305042706130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,6 +122,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8464368245804279496}
+  - {fileID: 1552385118732387044}
   m_Father: {fileID: 7570233614371611469}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -162,6 +187,21 @@ MonoBehaviour:
   pitchForce: 200
   yawForce: 200
   rollForce: 300
+  fire1Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8558347246299403195}
+        m_TargetAssemblyTypeName: RayGun, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &9071547305042706130
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -189,7 +229,7 @@ GameObject:
   - component: {fileID: 8464368245804279496}
   - component: {fileID: 8464368245804279498}
   - component: {fileID: 8464368245804279497}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +314,7 @@ GameObject:
   - component: {fileID: 8464368246303093086}
   - component: {fileID: 8464368246303093081}
   - component: {fileID: 168369098805011466}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
