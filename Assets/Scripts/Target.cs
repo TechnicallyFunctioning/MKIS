@@ -19,6 +19,5 @@ public class Target : MonoBehaviour
         explosionObject.SetActive(true);
         targetModel.SetActive(false);
         Destroy(gameObject, explosionTime);
-        Debug.Log("Explode");
     }
 }

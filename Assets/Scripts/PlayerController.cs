@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float yawForce;
     [SerializeField] private float rollForce;
     [SerializeField] private UnityEvent fire1Event;
+    [SerializeField] private UnityEvent fire2Event;
     // Components
     private Rigidbody shipRb;
     private InputActionAsset inputAsset;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private float yawing = 0;
     private float rolling = 0;
     private bool firing1 = false;
+    private bool firing2 = false;
 
     // Gather Components
     private void Awake()
@@ -44,12 +46,15 @@ public class PlayerController : MonoBehaviour
         ship.FindAction("Roll").canceled += StopRoll;
         ship.FindAction("Fire1").performed += DoFire1;
         ship.FindAction("Fire1").canceled += StopFire1;
+        ship.FindAction("Fire2").performed += DoFire2;
+        ship.FindAction("Fire2").canceled += StopFire2;
     }
 
     private void Update()
     {
         // Attempt to fire when button is held
         if (firing1) { fire1Event.Invoke(); }
+        if (firing2) { fire2Event.Invoke(); }
     }
 
     // Physics Based Movement
@@ -73,14 +78,16 @@ public class PlayerController : MonoBehaviour
 
     // Get all Input Data (Button press/release, stick position, etc)
     // Assign Input Data to Variables
-    private void DoThrust(InputAction.CallbackContext context) { thrust = maxThrust * context.ReadValue<float>(); }
-    private void StopThrust(InputAction.CallbackContext context) { thrust = 0; }
-    private void DoPitch(InputAction.CallbackContext context) { pitching = context.ReadValue<float>(); }
-    private void StopPitch(InputAction.CallbackContext context) { pitching = 0; }
-    private void DoYaw(InputAction.CallbackContext context) { yawing = context.ReadValue<float>(); }
-    private void StopYaw(InputAction.CallbackContext context) { yawing = 0; }
-    private void DoRoll(InputAction.CallbackContext context) { rolling = context.ReadValue<float>(); }
-    private void StopRoll(InputAction.CallbackContext context) { rolling = 0; }
-    private void DoFire1(InputAction.CallbackContext context) { firing1 = true; }    
-    private void StopFire1(InputAction.CallbackContext context) { firing1 = false; }
+    private void DoThrust(InputAction.CallbackContext context) => thrust = maxThrust * context.ReadValue<float>();
+    private void StopThrust(InputAction.CallbackContext context) => thrust = 0;
+    private void DoPitch(InputAction.CallbackContext context) => pitching = context.ReadValue<float>();
+    private void StopPitch(InputAction.CallbackContext context) => pitching = 0;
+    private void DoYaw(InputAction.CallbackContext context) => yawing = context.ReadValue<float>();
+    private void StopYaw(InputAction.CallbackContext context) => yawing = 0;
+    private void DoRoll(InputAction.CallbackContext context) => rolling = context.ReadValue<float>();
+    private void StopRoll(InputAction.CallbackContext context) => rolling = 0;
+    private void DoFire1(InputAction.CallbackContext context) => firing1 = true;
+    private void StopFire1(InputAction.CallbackContext context) => firing1 = false;
+    private void DoFire2(InputAction.CallbackContext context) => firing2 = true;
+    private void StopFire2(InputAction.CallbackContext context) => firing2 = false;
 }

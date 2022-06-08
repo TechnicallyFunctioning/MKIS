@@ -13,7 +13,7 @@ public class RayGun : MonoBehaviour
     [SerializeField] private GameObject splashObject;
     [SerializeField] private GameObject tracerObject;
     [SerializeField] private float splashDuration;
-    private float cooldownTime;
+    private float cooldownTime = 0;
 
     public void Fire()
     {

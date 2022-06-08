@@ -80,6 +80,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire2"",
+                    ""type"": ""Button"",
+                    ""id"": ""45a2139b-0fce-4dbf-9cf2-19b335099148"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -236,6 +245,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Fire1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25796026-4d98-489a-8e81-c4ca00bc9866"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Fire2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -278,6 +298,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Ship_Yaw = m_Ship.FindAction("Yaw", throwIfNotFound: true);
         m_Ship_Roll = m_Ship.FindAction("Roll", throwIfNotFound: true);
         m_Ship_Fire1 = m_Ship.FindAction("Fire1", throwIfNotFound: true);
+        m_Ship_Fire2 = m_Ship.FindAction("Fire2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -343,6 +364,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Ship_Yaw;
     private readonly InputAction m_Ship_Roll;
     private readonly InputAction m_Ship_Fire1;
+    private readonly InputAction m_Ship_Fire2;
     public struct ShipActions
     {
         private @InputActions m_Wrapper;
@@ -353,6 +375,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Yaw => m_Wrapper.m_Ship_Yaw;
         public InputAction @Roll => m_Wrapper.m_Ship_Roll;
         public InputAction @Fire1 => m_Wrapper.m_Ship_Fire1;
+        public InputAction @Fire2 => m_Wrapper.m_Ship_Fire2;
         public InputActionMap Get() { return m_Wrapper.m_Ship; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -380,6 +403,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Fire1.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnFire1;
                 @Fire1.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnFire1;
                 @Fire1.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnFire1;
+                @Fire2.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnFire2;
+                @Fire2.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnFire2;
+                @Fire2.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnFire2;
             }
             m_Wrapper.m_ShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -402,6 +428,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Fire1.started += instance.OnFire1;
                 @Fire1.performed += instance.OnFire1;
                 @Fire1.canceled += instance.OnFire1;
+                @Fire2.started += instance.OnFire2;
+                @Fire2.performed += instance.OnFire2;
+                @Fire2.canceled += instance.OnFire2;
             }
         }
     }
@@ -432,5 +461,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnYaw(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
         void OnFire1(InputAction.CallbackContext context);
+        void OnFire2(InputAction.CallbackContext context);
     }
 }
